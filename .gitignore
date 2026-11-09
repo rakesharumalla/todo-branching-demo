@@ -1,0 +1,36 @@
+# Secrets & local env — NEVER commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.databrickscfg
+
+# Local Lakebase branch config written by the git hook
+.lakebase-branch
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.uv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Git worktrees created during the demo (kept outside repo, but ignore if nested)
+worktrees/
+*.worktree
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Databricks bundle build output
+.databricks/
+
+# Local AI-tool state
+.claude/
+.isaac/

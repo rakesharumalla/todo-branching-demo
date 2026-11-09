@@ -1,0 +1,19 @@
+# Databricks Apps entrypoint. The app serves Streamlit only — it does NOT run migrations.
+# Schema/tables are owned by your user; migrations are applied locally and by CI (GitHub
+# Actions) before the app redeploys. The app SP has read/write (DML) grants on todo_app.
+env:
+  - name: LAKEBASE_PROJECT_ID
+    value: "todo-branching-demo"
+  - name: LAKEBASE_BRANCH_ID
+    value: "production"
+  - name: LAKEBASE_ENDPOINT_ID
+    value: "primary"
+  - name: LAKEBASE_DATABASE
+    value: "databricks_postgres"
+  - name: LAKEBASE_SCHEMA
+    value: "todo_app"
+
+command:
+  - "bash"
+  - "-c"
+  - "streamlit run app.py --server.port ${DATABRICKS_APP_PORT:-8000} --server.address 0.0.0.0 --server.headless true"

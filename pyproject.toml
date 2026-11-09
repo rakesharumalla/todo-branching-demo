@@ -1,0 +1,26 @@
+[project]
+name = "todo-branching-demo"
+version = "0.1.0"
+description = "Lakebase copy-on-write DB branching mapped to git worktrees — a Databricks Apps + Lakebase demo"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "streamlit>=1.40",
+    "sqlalchemy>=2.0",
+    "psycopg[binary]>=3.2",
+    "alembic>=1.13",
+    "databricks-sdk>=0.81",
+    "pydantic-settings>=2.5",
+    "python-dotenv>=1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

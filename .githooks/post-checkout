@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# Fires on `git checkout <branch>` and `git worktree add`. Provisions a Lakebase branch
+# for the new git branch and points .env at it. Deliberately non-fatal: a Lakebase hiccup
+# must never block your checkout.
+#
+# Args: $1 prev-HEAD  $2 new-HEAD  $3 flag (1 = branch checkout, 0 = file checkout)
+
+[[ "${3:-0}" == "1" ]] || exit 0
+
+SCRIPT="$(git rev-parse --show-toplevel)/scripts/lakebase-branch.sh"
+if [[ -x "$SCRIPT" || -f "$SCRIPT" ]]; then
+  if bash "$SCRIPT"; then
+    :
+  else
+    echo "⚠️  lakebase-branch.sh failed — run it manually: bash scripts/lakebase-branch.sh"
+  fi
+fi
+exit 0

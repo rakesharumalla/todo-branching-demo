@@ -1,0 +1,8 @@
+# Runtime deps for the Databricks App (psycopg is NOT pre-installed on Apps).
+streamlit>=1.40
+sqlalchemy>=2.0
+psycopg[binary]>=3.2
+alembic>=1.13
+databricks-sdk>=0.81
+pydantic-settings>=2.5
+python-dotenv>=1.0
